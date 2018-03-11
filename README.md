@@ -15,12 +15,14 @@ It will eventually support
 
 * Freetext review
 * Gap fill (3 variants)
-* Offset match (for matching items on a timeline)
-* Coordinate match (for identify an item on an image)
-* Value assign, where users assign arbitrary values to options
+* Offset match (to match items on a timeline linked to audio or video)
+* Coordinate match (to identify an item on an image, diagram or map)
+* Value assignment, where users assign arbitrary values to options
+* Scale assignment, where users assign multiple scale values to options
 
 Other missing features, implemented only at the backend
 
+* Surveys, i.e. with adapted UI and scoring, but the same underlying engine
 * Timing
 * Media objects (images, audio, video)
 * Scales, i.e. assigning multiple evaluation criteria to options in a survey question
