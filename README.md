@@ -30,7 +30,7 @@ Other missing features, implemented only at the backend
 
 ## Important notes
 
-This component will only work with [MWT API](https://github.com/neilg63/mwtfront) and will be complemented by a separated admin area. The frontend is conceived a Single Page Application, while the admin area will contain much additional functionality not required in the frontend.
+This component will only work with [MWT API](https://github.com/neilg63/mwtapi) and will be complemented by a separated admin area. The frontend is conceived a Single Page Application, while the admin area will contain much additional functionality not required in the frontend.
 
 ## Build Setup
 
