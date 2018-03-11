@@ -78,6 +78,7 @@ export default {
         this.isMarked = this.question.result.hasOwnProperty('_id')
       }
       if (this.isMarked) {
+        this.result =  this.question.result;
         switch (this.question.mode) {
           case 'multiple_choice':
           case 'multiple_answer':
@@ -142,7 +143,6 @@ export default {
       })
     },
     updateSelectedOptions () {
-      this.result =  this.question.result;
       if (this.result.options) {
         let i = 0, j = 0, opt1, opt2;
         for (; i < this.result.options.length; i++) {
@@ -161,7 +161,6 @@ export default {
       }
     },
     updateValue () {
-      this.result =  this.question.result;
       if (this.result.value) {
         this.value = this.result.value
       }
