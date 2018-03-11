@@ -206,7 +206,10 @@ export default {
           }
           assessment.results[result.question.toString()] = result
           this.$ls.set('assessment',assessment)
-          this.getScore()
+          let comp = this
+          setTimeout(() => {
+            comp.score = comp.getScore()
+          }, 125)
         }
       }
     },
