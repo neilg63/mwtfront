@@ -22,6 +22,7 @@ It will eventually support
 
 Other missing features, implemented only at the backend
 
+* User management / login via social networks
 * Surveys, i.e. with adapted UI and scoring, but the same underlying engine
 * Timing
 * Media objects (images, audio, video)
