@@ -6,6 +6,9 @@
         <span class="number points">{{result.points}}</span>
         <span class="separator"></span>
         <span class="number total">{{result.maxPoints}}</span>
+        <div class="status" :class="result.statusClass">
+          <span class="text">{{result.status}}</span>
+        </div>
       </div>
     </div>
     <template v-if="optionComponent == 'MatchingPairs'">
@@ -51,7 +54,9 @@ export default {
       optionComponent: 'MultipleOption',
       result: {
         valid: false,
-        points: 0
+        points: 0,
+        status: '',
+        statusClass: ''
       },
       isMarked: false,
       value: null,
@@ -79,6 +84,18 @@ export default {
       }
       if (this.isMarked) {
         this.result =  this.question.result;
+        this.result.status = '';
+        this.result.statusClass = '';
+        if (this.result.points === this.result.maxPoints) {
+          this.result.status = 'correct';
+          this.result.statusClass = 'correct';
+        } else if (this.result.points > 0) {
+          this.result.status = 'partly correct';
+          this.result.statusClass = 'partial';
+        } else {
+          this.result.status = 'incorrect';
+          this.result.statusClass = 'incorrect';
+        }
         switch (this.question.mode) {
           case 'multiple_choice':
           case 'multiple_answer':
@@ -136,9 +153,8 @@ export default {
           comp.result = result
           comp.isMarked = true
           comp.$parent.addResult(result)
-          setTimeout(() => {
-            comp.$parent.nextQuestion()
-          },1000)
+          comp.question.result = result
+          comp.$bus.$emit('change-question',comp.currentQuestion);
         }
       })
     },

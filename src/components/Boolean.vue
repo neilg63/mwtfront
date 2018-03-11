@@ -1,7 +1,7 @@
 <template>
 <div class="inner">
     <ol v-if="question.options.length > 0" class="options">
-      <li v-for="(option,index) in question.options" :key="option._id" :class="{'selected': option.selected,'true': isTrue(option),'false': !isTrue(option)}" @click="select(option,index)">
+      <li v-for="(option,index) in question.options" :key="option._id" :class="{'selected': option.selected,'true': isTrue(option),'false': !isTrue(option)}" @click.stop="select(option,index)">
         <span class="selector"></span>
         <span class="text">{{option.text}}</span>
         <span class="mark"></span>
@@ -33,15 +33,10 @@ export default {
   methods: {
     select (option,index) {
       if (this.selected.length > 0) {
-        let matchedIndex = this.selected.findIndex(optId => optId.toString() == option._id.toString());
-        if (matchedIndex >= 0) {
-          this.selected.splice(matchedIndex,1);
-        }
         for (let i = 0; i < this.question.options.length; i++) {
-          this.question.options[i].selected = false;
+          this.question.options[i].selected = i === index;
         }
       }
-      option.selected = true
       this.selected = [option._id]
       this.send()
     },
@@ -56,12 +51,21 @@ export default {
       let params = {
         options: this.selected
       }
-      this.$parent.mark(this.question,params)
+      let valid = this.selected.length == 1
+      if (valid) {
+        this.$parent.mark(this.question,params)
+      }
     },
     refresh () {
       if (this.question.result) {
         if (this.question.result.options instanceof Array) {
           this.selected = this.question.result.options.map(o => o._id)
+        }
+        if (this.selected.length > 0) {
+          this.question.options = this.question.options.map(o => {
+            o.selected = o._id.toString() == this.selected[0].toString()
+            return o
+          })
         }
       }
     }

@@ -228,6 +228,38 @@ article .score .separator:before {
   content: "/";  
 }
 
+article .score > .status {
+  position: absolute;
+  bottom: -3em;
+  left: 0;
+}
+
+article .score > .status:before {
+  font-family: 'icomoon';
+  font-size: 1.5em;
+}
+
+article .score > .correct:before {
+  content: "\ea10";
+  color: #00cc00;
+}
+
+article .score > .partial:before {
+  content: "?";
+  color: #ee5500;
+}
+
+article .score > .incorrect:before {
+  content: "\ea0f";
+  color: #ff0000;
+}
+
+article .score > .status .text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.625em;
+}
+
 .question-nav {
   position: relative;
   min-height: 2em;
