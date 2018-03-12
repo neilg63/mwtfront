@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="feedback" v-if="hasFeedback">
-
+      <p>{{feedback}}</p>
     </div>
     <template v-if="optionComponent == 'MatchingPairs'">
       <matching-pairs :question="question"></matching-pairs>
@@ -101,7 +101,7 @@ export default {
           this.result.status = 'incorrect';
           this.result.statusClass = 'incorrect';
         }
-        console.log(result)
+        this.matchFeedback()
         switch (this.question.mode) {
           case 'multiple_choice':
           case 'multiple_answer':
@@ -185,6 +185,30 @@ export default {
     updateValue () {
       if (this.result.value) {
         this.value = this.result.value
+      }
+    },
+    matchFeedback () {
+      let i = 0, txt = "", op;
+      for (; i < this.result.options.length; i++) {
+        op = this.result.options[i];
+        if (op.feedback) {
+          if (typeof op.feedback.explanation == 'string') {
+            let comp = this
+            axios.get('/api/explanation/' + op.feedback.explanation)
+              .then(response => {
+                if (response.data) {
+                  let data = response.data
+                  if (data.text) {
+                    comp.feedback = data.text;
+                    if (comp.feedback.length > 1) {
+                      comp.hasFeedback = true
+                    }
+                  }
+                }
+                
+              });
+          }
+        }
       }
     }
   }
