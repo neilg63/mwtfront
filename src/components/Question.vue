@@ -2,13 +2,13 @@
   <article :class="wrapperClasses">
     <div :class="promptClasses">
       <p class="question">{{question.text}}</p>
-      <div class="score" :class="{'hidden': !isMarked}">
-        <span class="number points">{{result.points}}</span>
-        <span class="separator"></span>
-        <span class="number total">{{result.maxPoints}}</span>
-        <div class="status" :class="result.statusClass">
-          <span class="text">{{result.status}}</span>
-        </div>
+    </div>
+    <div class="score" :class="{'hidden': !isMarked}">
+      <span class="number points">{{result.points}}</span>
+      <span class="separator"></span>
+      <span class="number total">{{result.maxPoints}}</span>
+      <div class="status" :class="result.statusClass">
+        <span class="text">{{result.status}}</span>
       </div>
     </div>
     <template v-if="optionComponent == 'MatchingPairs'">
