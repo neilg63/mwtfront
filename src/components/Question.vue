@@ -11,6 +11,9 @@
         <span class="text">{{result.status}}</span>
       </div>
     </div>
+    <div class="feedback" v-if="hasFeedback">
+
+    </div>
     <template v-if="optionComponent == 'MatchingPairs'">
       <matching-pairs :question="question"></matching-pairs>
     </template>
@@ -60,6 +63,8 @@ export default {
       },
       isMarked: false,
       value: null,
+      feedback: "",
+      hasFeedback: false,
       wrapperClasses: ['question'],
       promptClasses: ['prompt']
     }
@@ -96,6 +101,7 @@ export default {
           this.result.status = 'incorrect';
           this.result.statusClass = 'incorrect';
         }
+        console.log(result)
         switch (this.question.mode) {
           case 'multiple_choice':
           case 'multiple_answer':
