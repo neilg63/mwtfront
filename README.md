@@ -1,6 +1,4 @@
-# mwtfront
-
-> Multi Web Test Frontend
+#  MultiWebTest Frontend
 
 This is a Vue JS frontend application for the MultiWebTest backend. It presents questions of various types and submits answers to the backend for evaluation. The current alpha build only supports:
 
