@@ -5,13 +5,19 @@
       <h2 class="item">{{assessment.title}}</h2>
       <h5 class="item">{{currentSection.title}}</h5>
     </header>
-    <div class="score">
-      <span class="assessment-score">{{score.points}}</span>
-      <span class="separator"></span>
-      <span class="assessment-max">{{score.maxPoints}}</span>
-      <span class="assessment-total">{{score.total}}</span>
-      <span class="assessment-num">{{questionNumber}}</span>
-      <span class="assessment-num">{{numQuestions}}</span>
+    <div class="board flex-row">
+      <div class="score total">
+        <span class="points item">{{score.points}}</span>
+        <span class="separator"></span>
+        <span class="max">{{score.maxPoints}}</span>
+        <span class="percent item parentheses">{{score.percent}}</span>
+        
+      </div>
+      <div class="progress">
+        <span class="question-num item">{{questionNumber}}</span>
+        <span class="separator"></span>
+        <span class="questions-total item">{{numQuestions}}</span>
+      </div>
     </div>
     <question :question="currentQuestion" :index="questionIndex"></question>
     <nav class="question-nav">
@@ -57,7 +63,8 @@ export default {
       score: {
         points: 0,
         maxPoints: 0,
-        total: 0
+        total: 0,
+        percent: 0
       },
       wrapperClasses: []
     }
@@ -237,17 +244,26 @@ export default {
           for (; i < numKeys; i++) {
             key = keys[i];
             result = assessment.results[key];
-            if (result.points) {
-              score.total++;
-              score.points += result.points;
-              if (result.maxPoints) {
-                score.maxPoints += result.maxPoints
-              }
+            if (!result.points) {
+              result.points = 0;
+            }
+            score.total++;
+            score.points += result.points;
+            if (result.maxPoints) {
+              score.maxPoints += result.maxPoints
             }
           }
         }
+        this.applyPercent(score)
       }
       return score 
+    },
+    applyPercent (score) {
+      let frac = 0
+      if (score.points > 0 && score.maxPoints > 0) {
+        frac = score.points / score.maxPoints
+      }
+      score.percent = Math.ceil(1000 * frac) / 10
     }
   }
 }

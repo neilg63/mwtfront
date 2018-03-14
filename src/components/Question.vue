@@ -189,6 +189,8 @@ export default {
     },
     matchFeedback () {
       let i = 0, txt = "", op;
+      this.hasFeedback = false
+      this.feedback = ''
       for (; i < this.result.options.length; i++) {
         op = this.result.options[i];
         if (op.feedback) {

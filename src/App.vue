@@ -360,6 +360,27 @@ article .prompt {
   position: relative;
 }
 
+.board {
+  width: 100%;
+}
+
+.board > div {
+  width: 30%;
+  padding: 0 10%;
+}
+
+.board > div > span.item {
+  font-size: 1.25em;
+}
+
+.board .score {
+  text-align: left;
+}
+
+.board .progress {
+  text-align: right;
+}
+
 article.question .score {
   position: absolute;
   top: 0;
@@ -384,8 +405,20 @@ article .score .total {
   top: 0.25em;
 }
 
-article .score .separator:before {
+.score span.separator:before {
   content: "/";  
+}
+
+.progress span.separator:before {
+  position: relative;
+  display: inline-block;
+  content: "...";
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.score span.percent:after {
+  content: "%";
 }
 
 article .score > .status {
