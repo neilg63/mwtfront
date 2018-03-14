@@ -42,7 +42,7 @@ This Web application is built for modern browsers, i.e. Chrome 50+, Firefox 47+,
 
 The core component is the *assessment*, which may be either a test (quiz or exam) or a survey (i.e. subjective, but still evaluated). An assessment may contain one or more *sections* or *question sets*. In normal circumstances an assessment is a set of questions presented in one session, although timing rules may allow for pauses between sections. 
 
-Sections may have different rules and evaluation criteria. In tests, one section may be information purposes e.g. name, age, email address etc. only and another an unmarked practice session before beginning the marked sections. However, many simple tests and surveys may only need one section.
+Sections may have different rules and evaluation criteria. In tests, one section may be for information purposes only (e.g. name, age, email address etc.) and another an unmarked practice session before beginning the marked sections and we may include an extra section interpreted as a survey (e.g. How would rate this test?). However, many simple tests and surveys may only need one section.
 
 ### Feedback and Explanations
 
