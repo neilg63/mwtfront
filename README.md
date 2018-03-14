@@ -46,11 +46,11 @@ Sections may have different rules and evaluation criteria. In tests, one section
 
 ### Feedback and Explanations
 
-The data schema lets you add feedback with an explanation and option media at four levels:
+The data schema lets you add feedback with an explanation and optional media at four levels:
 
 * For the whole assessment depending on the final evaluation. 
-* For each section, again based on the evalution of that section. However, such feedback may appear either after the related section or at the end of th assessment
-* For each question, again depending on its result. You may have one feedback item for all outcomes or one for different evaluation criteria (e.g. correctness or custom scales applied to surveys). However, you may set such feedback to appear after submitting a question, after a section or at the end of the assessment
+* For each section. However, such feedback may appear either after the related section or at the end of th assessment
+* For each question, again depending on its result. You may have one feedback item for all outcomes or one for different evaluation criteria (e.g. correctness or custom scales applied to surveys). As with assessments and sections, you may set such feedback to appear after submitting a question, after a section or at the end of the assessment
 * For each option, i.e. feedback that applies to a specific user selection. This may appear after answering a question, at the end of section alongside question and section feedback or at the end of a completed assessment.
 
 The feedback may vary in detail. The data schema lets you re-use explanations and media objects that may be applicable in different situations. E.g. simple feedback may be "well done" or "better luck next time", but you may prefer "excellent, you're expert" or "that was tricky" for more challenging questions. It's simply the message, video or audio clip you want to appear when a user reviews feedback on the assessment.
